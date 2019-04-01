@@ -3,6 +3,10 @@ import 'pages/english_words.dart';
 import 'pages/frameworkoverview/overview1.dart';
 import 'pages/frameworkoverview/overview2.dart';
 import 'pages/frameworkoverview/overview3.dart';
+import 'pages/http_futurebuilder.dart';
+import 'pages/websocket_streambuilder.dart';
+
+
 
 
 void main() => runApp(MyApp());
@@ -26,7 +30,9 @@ var _pageList = <String, Widget> {
   'english_words': new RandomWords(),
   'framework_overview1': new FrameworkOverview1(),
   'framework_overview2': new FrameworkOverview2(),
-  '购物车': new ShoppingList()
+  '购物车': new ShoppingList(),
+  "网络请求http": new HttpFutureBuilder(),
+  "网络请求websocket": new WebSocketStreamBuilder(),
   };
 
 class HomePage extends StatefulWidget {
@@ -71,13 +77,7 @@ class _HomePageState extends State<HomePage> {
           style: _biggerFont,
         ),
         onTap: () {
-          Navigator.of(context).push(
-            new MaterialPageRoute(
-              builder: (context) {
-                return _pageList[key];
-              }
-            )
-          );
+          _navigateRoute(context, key);
         },
       );
     });
@@ -88,5 +88,15 @@ class _HomePageState extends State<HomePage> {
     ).toList();
 
     return new ListView(children: dividers,);
+  }
+
+  _navigateRoute(BuildContext context, String key) async{
+    final result = await Navigator.of(context).push(
+        new MaterialPageRoute(
+            builder: (context) {
+              return _pageList[key];
+            }
+        )
+    );
   }
 }
