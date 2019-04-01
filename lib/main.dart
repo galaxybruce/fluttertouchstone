@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-var _pageList = <String, Widget>{
+var _pageList = <String, Widget> {
   'english_words': new RandomWords(),
   'framework_overview1': new FrameworkOverview1(),
   'framework_overview2': new FrameworkOverview2(),
