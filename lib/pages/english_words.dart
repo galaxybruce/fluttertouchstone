@@ -13,7 +13,27 @@ class RandomWordsState extends State<RandomWords> {
   final _biggerFont = const TextStyle(fontSize: 18.0);
 
   @override
+  void initState() {
+    print("======RandomWordsState.initState");
+    super.initState();
+  }
+
+  @override
+  void deactivate() {
+    print("======RandomWordsState.deactivate");
+    super.deactivate();
+  }
+
+  @override
+  void dispose() {
+    print("======RandomWordsState.dispose");
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    print("======RandomWordsState.build");
+
     return new Scaffold(
       appBar: AppBar(
         elevation: 0,

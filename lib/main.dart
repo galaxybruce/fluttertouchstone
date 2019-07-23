@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'pages/AppStateContainer.dart';
 import 'pages/english_words.dart';
 import 'pages/frameworkoverview/overview1.dart';
 import 'pages/frameworkoverview/overview2.dart';
@@ -9,17 +10,39 @@ import 'pages/websocket_streambuilder.dart';
 
 
 
-void main() => runApp(MyApp());
+void main() => runApp(App());
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class App extends StatefulWidget {
+  @override
+  _AppState createState() => _AppState();
+}
+
+class _AppState extends State<App> {
+  @override
+  void initState() {
+    super.initState();
+    print("======app initState");
+  }
+
+  @override
+  void deactivate() {
+    print("======app deactivate");
+    super.deactivate();
+  }
+  @override
+  void dispose() {
+    print("======app dispose");
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    print("======app.build");
     return MaterialApp(
       title: 'Flutter Touch Stone',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        primaryColor: Colors.blue[500]
+          primarySwatch: Colors.blue,
+          primaryColor: Colors.blue[500]
       ),
       home: HomePage(title: 'Flutter Touch Stone Home Page'),
     );
@@ -33,6 +56,7 @@ var _pageList = <String, Widget> {
   '购物车': new ShoppingList(),
   "网络请求http": new HttpFutureBuilder(),
   "网络请求websocket": new WebSocketStreamBuilder(),
+  "InheritedWidget": MyInheritedApp(),
   };
 
 class HomePage extends StatefulWidget {
@@ -49,18 +73,25 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    print("======home.initState");
     super.initState();
   }
 
   @override
+  void deactivate() {
+    print("======home.deactivate");
+    super.deactivate();
+  }
+
+  @override
   void dispose() {
-    // TODO: implement dispose
+    print("======home.dispose");
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    print("======home.build");
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
